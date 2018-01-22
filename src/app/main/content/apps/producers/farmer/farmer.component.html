@@ -1,0 +1,158 @@
+<div id="product" class="page-layout carded fullwidth" fusePerfectScrollbar>
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg mat-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header white-fg" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/apps/producers/farmers'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="product-image mr-8 mr-sm-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="farmer.images[0]" [src]="farmer.images[0].url">
+                    <img *ngIf="!farmer.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start start" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{farmer.firstName}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Farmer
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Farmer Detail</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="farmerForm.invalid" *ngIf="pageType ==='new'" (click)="addFarmer()">
+                <span>ADD</span>
+            </button>
+
+            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="farmerForm.invalid || farmerForm.pristine" *ngIf="pageType ==='edit'" (click)="saveFarmer()">
+                <span>SAVE</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="farmerForm" [formGroup]="farmerForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Basic Info">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field class="w-100-p">
+                                    <input matInput name="firstName" formControlName="firstName" placeholder="First Name" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-100-p">
+                                    <input matInput name="lastName" formControlName="lastName" placeholder="Last Name" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-100-p">
+                                    <input matInput name="address" formControlName="address" placeholder="Address" required>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field class="w-100-p">
+                                    <input matInput name="idProof" formControlName="idProof" placeholder="ID Proof" required>
+                                </mat-form-field> -->
+
+                                <mat-form-field class="w-100-p" [color]="farmerForm.value.idProof">
+                                    <mat-select placeholder="ID Proof" formControlName="idProof">
+                                        <mat-option value="aadharCard">Aadhar Card</mat-option>
+                                        <mat-option value="voterID">Voter ID</mat-option>
+                                        <mat-option value="driverslicense">Driver's License</mat-option>
+                                        <mat-option value="passport">Passport</mat-option>
+                                        <mat-option value="panCard">PAN Card</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-100-p">
+                                    <input matInput name="idNumber" formControlName="idNumber" placeholder="ID Number" required>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field class="w-100-p">
+                                    <input matInput name="farmId" formControlName="farmId" placeholder="Farm Id" required>
+                                </mat-form-field> -->
+                                <!--
+                                <mat-form-field class="w-100-p">
+                                    <input matInput type="number" placeholder="Weight (kg)" name="productWeight" formControlName="productWeight" min="50" required>
+                                    <!-- <mat-error *ngIf="options.get('productWeight')?.invalid">Min size: 10px</mat-error> -->
+                                <!-- </mat-form-field> -->
+
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Farms">
+                            <div class="products tab-content p-24" fusePerfectScrollbar>
+                                <table class="simple">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Produce Type</th>
+                                            <th>Weight</th>
+                                            <th>Harvest Date</th>
+                                            <th>Description</th>
+                                            <th>Audit Certificate</th>
+                                            <th>Organic Certificate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="product-row" *ngFor="let farm of farmer.farms" [routerLink]="'/apps/producers/farmers/'+farmer.id">
+                                            <td class="w-64">
+                                                {{farm.id}}
+                                            </td>
+                                            <td>
+                                                {{farm.produceType}}
+                                            </td>
+                                            <td>
+                                                {{farm.weight}}
+                                            </td>
+                                            <td>
+                                                {{farm.harvestDate}}
+                                            </td>
+                                            <td>
+                                                {{farm.description}}
+                                            </td>
+                                            <td>
+                                                {{farm.auditCertificate}}
+                                            </td>
+                                            <td>
+                                                {{farm.organicCertificate}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-tab>
+
+                    </mat-tab-group>
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
