@@ -5,7 +5,8 @@ export const locale = {
       'APPLICATIONS': 'Applications',
       'Distributors': 'Distributors',
       'Farmers': 'Farmers',
-      'PACKINGCENTER': 'Packing Center'
+      'PACKINGCENTER': 'Packing Center',
+      'TRACKER': 'Tracker'
     }
   }
 };

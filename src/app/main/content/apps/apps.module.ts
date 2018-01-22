@@ -5,23 +5,26 @@ import { RouterModule } from '@angular/router';
 
 const routes = [
     {
-        path        : 'packingCenter',
+        path: 'packingCenter',
         loadChildren: './packingCenter/packingCenter.module#PackingCenterModule'
     },
     {
-      path        : 'producers',
-      loadChildren: './producers/producers.module#ProducersModule'
-  }
+        path: 'producers',
+        loadChildren: './producers/producers.module#ProducersModule'
+    },
+    {
+        path: 'tracker',
+        loadChildren: './tracker/tracker.module#TrackerModule'
+    }
 ];
 
 @NgModule({
-    imports     : [
+    imports: [
         SharedModule,
         RouterModule.forChild(routes),
         // FuseAngularMaterialModule
     ],
     declarations: []
 })
-export class FuseAppsModule
-{
+export class FuseAppsModule {
 }

@@ -51,6 +51,15 @@ export class FuseNavigationModel implements FuseNavigationModelInterface {
                 'exactMatch': true
               }
             ]
+          },
+          {
+            'id': 'tracker',
+            'title': 'Tracker',
+            'translate': 'NAV.TRACKER',
+            'type': 'item',
+            'icon': 'local_shipping',
+            'url': '/apps/tracker/track',
+            'exactMatch': true
           }
         ]
       }
