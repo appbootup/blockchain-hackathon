@@ -21,7 +21,7 @@ GitHub: sillysachin
 
 Vinay V
 vinay.v.raman@gmail.com
-GitHub: 
+GitHub: vinayvraman
 
 Pranay Praneet
 pranay.iitm@gmail.com
@@ -29,4 +29,4 @@ GitHub: pranay01
 
 Nithin Shekhar R
 nitin3685@gmail.com
-GitHub: 
+GitHub: NithinShekhar
